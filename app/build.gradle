@@ -18,6 +18,7 @@ android {
         versionCode 32
         versionName "v2"
         buildConfigField "String", "GOOGLE_BILLING_KEY", "\"" + GOOGLE_BILLING_KEY + "\""
+        signingConfig signingConfigs.release
     }
 
     signingConfigs {
@@ -26,12 +27,15 @@ android {
             keyPassword KEYSTORE_PASSWORD
             storeFile file('../../keystore/920-text-editor-v2.keystore.jks')
             storePassword KEYSTORE_PASSWORD
+   //         enableV3Signing true
         }
         release {
             keyAlias KEYSTORE_ALIAS
             keyPassword KEYSTORE_PASSWORD
             storeFile file('../../keystore/920-text-editor-v2.keystore.jks')
             storePassword KEYSTORE_PASSWORD
+  //          enableV3Signing true
+            v2SigningEnabled true
         }
     }
 
@@ -76,8 +80,8 @@ android {
 //    }
     changeApkName(applicationVariants, defaultConfig)
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_11
+        targetCompatibility JavaVersion.VERSION_1_11
     }
 }
 
